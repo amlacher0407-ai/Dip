@@ -1,0 +1,311 @@
+/* ================================================
+   Dashboard-Seite – spezifische Stile
+   ================================================ */
+
+/* ----- App-Header ----- */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  height: 3.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header__logo {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--green-500);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.app-header__logo:hover {
+  color: var(--green-600, #16a34a);
+}
+
+.app-header__user {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* Benutzer-Avatar: Kreis mit Initialen */
+.user-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--green-500);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.app-header__username {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  white-space: nowrap;
+}
+
+/* Abmelden-Button: dezent, kein Rahmen */
+#logoutBtn {
+  font-size: 0.8125rem;
+  padding: 0.3125rem 0.75rem;
+  color: var(--gray-500);
+  background: transparent;
+  border: 1px solid var(--gray-300);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+#logoutBtn:hover {
+  color: var(--gray-700);
+  border-color: var(--gray-400);
+}
+
+/* ----- Begrüßungsbereich ----- */
+.greeting {
+  padding: 1.75rem 1.25rem 1rem;
+}
+
+.greeting__title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0 0 0.3rem;
+  line-height: 1.2;
+}
+
+.greeting__date {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  margin: 0;
+}
+
+/* ----- Hauptbereich ----- */
+.dashboard-main {
+  padding: 0.5rem 1.25rem;
+}
+
+/* ----- Bottom-Nav: aktiver Zustand und Icon-Größe ----- */
+/* Basis-Stile (.bottom-nav, .bottom-nav__item) kommen aus layout.css */
+.bottom-nav__item--active {
+  color: var(--green-500);
+}
+
+.bottom-nav__icon {
+  width: 1.375rem;
+  height: 1.375rem;
+  display: block;
+}
+
+/* ----- Mobile: Abstand für die fixe Bottom-Nav ----- */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* ----- Sehr kleine Screens: Benutzername ausblenden ----- */
+@media (max-width: 400px) {
+  .app-header__username {
+    display: none;
+  }
+}
+
+/* ================================================
+   Live-Werte-Kacheln (Schritt 4b)
+   ================================================ */
+
+/* Responsive Grid: Mobile 2×2, Desktop 1×4 */
+.live-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .live-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Einzelne Kachel */
+.live-card {
+  background: #fff;
+  border-radius: 0.625rem;
+  padding: 1.125rem 1rem 1rem;
+  border-top: 3px solid transparent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* Farbakzente oben */
+.live-card--pv          { border-top-color: var(--green-500); }
+.live-card--consumption { border-top-color: var(--blue-500); }
+.live-card--feed        { border-top-color: var(--amber-500); }
+.live-card--grid        { border-top-color: var(--gray-400); }
+
+/* Label (oben, klein, Großbuchstaben) */
+.live-card__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Hauptwert (groß, fett) */
+.live-card__value {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+/* Hinweis unten */
+.live-card__hint {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+}
+
+/* Ausgegraut – für reine Verbraucher (kein PV) */
+.live-card--inactive {
+  border-top-color: var(--gray-200);
+}
+
+.live-card--inactive .live-card__value {
+  color: var(--gray-300);
+}
+
+/* ================================================
+   Tagesverlauf-Chart (Schritt 4c)
+   ================================================ */
+
+.chart-card {
+  background: #fff;
+  border-radius: 0.625rem;
+  padding: 1.125rem 1rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
+  margin-top: 0.75rem;
+}
+
+.chart-card__title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.875rem;
+}
+
+/* Feste Höhe nötig, sonst wächst Chart.js unendlich */
+.chart-container {
+  position: relative;
+  height: 240px;
+}
+
+@media (min-width: 768px) {
+  .chart-container {
+    height: 320px;
+  }
+}
+
+/* ================================================
+   Community-Übersicht (Schritt 4d)
+   ================================================ */
+
+.community-card {
+  background: #fff;
+  border-radius: 0.625rem;
+  padding: 1.125rem 1rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.community-card__title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.875rem;
+}
+
+/* Grid: Mobile 2×2, Desktop 1×4 */
+.community-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .community-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Einzelne Statistik-Zelle */
+.community-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.community-stat__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Standardwert */
+.community-stat__value {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  line-height: 1.15;
+}
+
+/* Autarkiegrad: deutlich größer und grün (Hauptwert) */
+.community-stat--autarkie .community-stat__value {
+  font-size: 2.5rem;
+  color: var(--green-500);
+}
+
+/* Farbvarianten für PV (grün) und Verbrauch (blau) */
+.community-stat__value--green {
+  color: var(--green-500);
+}
+
+.community-stat__value--blue {
+  color: var(--blue-500);
+}
+
+/* Kontextsatz unter dem Autarkie-Wert */
+.community-stat__context {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  line-height: 1.35;
+  margin-top: 0.15rem;
+}

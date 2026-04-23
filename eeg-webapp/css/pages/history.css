@@ -1,0 +1,275 @@
+/* ================================================
+   Verläufe-Seite – spezifische Stile
+   ================================================ */
+
+/* ----- App-Header (gleiche Struktur wie Dashboard) ----- */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  height: 3.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header__logo {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--green-500);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.app-header__logo:hover {
+  color: var(--green-600, #16a34a);
+}
+
+.app-header__user {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.user-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--green-500);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.app-header__username {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  white-space: nowrap;
+}
+
+#logoutBtn {
+  font-size: 0.8125rem;
+  padding: 0.3125rem 0.75rem;
+  color: var(--gray-500);
+  background: transparent;
+  border: 1px solid var(--gray-300);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+#logoutBtn:hover {
+  color: var(--gray-700);
+  border-color: var(--gray-400);
+}
+
+/* ----- Bottom-Nav: aktiver Zustand und Icon-Größe ----- */
+/* Basis-Stile (.bottom-nav, .bottom-nav__item) kommen aus layout.css */
+.bottom-nav__item--active {
+  color: var(--green-500);
+}
+
+.bottom-nav__icon {
+  width: 1.375rem;
+  height: 1.375rem;
+  display: block;
+}
+
+/* ----- Mobile: Abstand für die fixe Bottom-Nav ----- */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* ----- Sehr kleine Screens: Benutzername ausblenden ----- */
+@media (max-width: 400px) {
+  .app-header__username {
+    display: none;
+  }
+}
+
+/* ================================================
+   Seiten-Header
+   ================================================ */
+
+.page-header {
+  padding: 1.75rem 1.25rem 1rem;
+}
+
+.page-header__title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0 0 0.3rem;
+  line-height: 1.2;
+}
+
+.page-header__subtitle {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  margin: 0;
+}
+
+/* ================================================
+   Hauptbereich
+   ================================================ */
+
+.history-main {
+  padding: 0.5rem 1.25rem 1.5rem;
+}
+
+/* ================================================
+   Zeitraum-Tabs
+   ================================================ */
+
+.zeitraum-tabs {
+  display: flex;
+  gap: 0.375rem;
+  background: var(--gray-100, #f3f4f6);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  margin-bottom: 0.875rem;
+}
+
+.zeitraum-tab {
+  flex: 1;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  background: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+
+.zeitraum-tab:hover:not(.zeitraum-tab--active) {
+  color: var(--gray-700);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.zeitraum-tab--active {
+  background: #fff;
+  color: var(--gray-900);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
+}
+
+/* ================================================
+   Chart-Card (Verlaufs-Chart, größer als Dashboard)
+   ================================================ */
+
+.chart-card {
+  background: #fff;
+  border-radius: 0.625rem;
+  padding: 1.125rem 1rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.chart-card__title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.875rem;
+}
+
+/* Feste Höhe nötig, sonst wächst Chart.js unendlich */
+.chart-container--history {
+  position: relative;
+  height: 320px;
+}
+
+@media (min-width: 768px) {
+  .chart-container--history {
+    height: 420px;
+  }
+}
+
+/* ================================================
+   Datums-Navigation
+   ================================================ */
+
+.datum-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.datum-nav__text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  text-align: center;
+  flex: 1;
+}
+
+.datum-nav .btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ================================================
+   Statistik-Box
+   ================================================ */
+
+.statistik-box {
+  background: #fff;
+  border-radius: 0.625rem;
+  padding: 1rem 1.125rem;
+  margin-top: 0.875rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.statistik-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .statistik-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.statistik-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.statistik-item__wert {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.statistik-item__wert--gruen { color: var(--green-500); }
+.statistik-item__wert--blau  { color: var(--blue-500,  #3b82f6); }
+.statistik-item__wert--amber { color: var(--amber-500, #f59e0b); }
+
+.statistik-item__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--gray-500);
+}

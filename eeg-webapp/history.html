@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verläufe – EEG Ropper</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#22c55e">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/pages/history.css">
+</head>
+<body>
+  <!-- Seitenschutz: nur eingeloggte User -->
+  <script src="/js/data.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/guard.js"></script>
+
+  <!-- App-Header -->
+  <header class="app-header">
+    <a href="/index.html" class="app-header__logo">EEG Ropper</a>
+    <div class="app-header__user">
+      <div class="user-avatar" id="userAvatar" aria-hidden="true"></div>
+      <span class="app-header__username" id="userName"></span>
+      <button class="btn btn--sm btn--ghost" id="logoutBtn" type="button">Abmelden</button>
+    </div>
+  </header>
+
+  <!-- Seiten-Header -->
+  <section class="page-header">
+    <h1 class="page-header__title">Verläufe</h1>
+    <p class="page-header__subtitle">Deine Energiedaten im Überblick</p>
+  </section>
+
+  <!-- Hauptbereich -->
+  <main class="history-main">
+
+    <!-- Zeitraum-Tabs -->
+    <div class="zeitraum-tabs" role="tablist" aria-label="Zeitraum auswählen">
+      <button class="zeitraum-tab zeitraum-tab--active" data-period="day"
+              role="tab" aria-selected="true">Tag</button>
+      <button class="zeitraum-tab" data-period="week"
+              role="tab" aria-selected="false">Woche</button>
+      <button class="zeitraum-tab" data-period="month"
+              role="tab" aria-selected="false">Monat</button>
+      <button class="zeitraum-tab" data-period="year"
+              role="tab" aria-selected="false">Jahr</button>
+    </div>
+
+    <!-- Datums-Navigation -->
+    <div class="datum-nav" id="datumNav">
+      <button class="btn btn--ghost btn--sm" id="vorherigBtn" type="button" aria-label="Vorheriger Zeitraum">← Vorheriger</button>
+      <span class="datum-nav__text" id="datumText" aria-live="polite"></span>
+      <button class="btn btn--ghost btn--sm" id="naechsterBtn" type="button" aria-label="Nächster Zeitraum">Nächster →</button>
+    </div>
+
+    <!-- Chart-Card -->
+    <section class="chart-card" aria-label="Energieverlauf">
+      <h2 class="chart-card__title" id="chartTitel">Heutiger Verlauf</h2>
+      <div class="chart-container chart-container--history">
+        <canvas id="verlaufChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Statistik-Box -->
+    <section class="statistik-box" aria-label="Statistik-Zusammenfassung">
+      <div class="statistik-grid">
+        <div class="statistik-item">
+          <span class="statistik-item__wert statistik-item__wert--gruen" id="statPV">—</span>
+          <span class="statistik-item__label">PV-Erzeugung gesamt</span>
+        </div>
+        <div class="statistik-item">
+          <span class="statistik-item__wert statistik-item__wert--blau" id="statVerbrauch">—</span>
+          <span class="statistik-item__label">Verbrauch gesamt</span>
+        </div>
+        <div class="statistik-item">
+          <span class="statistik-item__wert statistik-item__wert--amber" id="statEigenverbrauch">—</span>
+          <span class="statistik-item__label">Eigenverbrauch</span>
+        </div>
+        <div class="statistik-item">
+          <span class="statistik-item__wert statistik-item__wert--gruen" id="statAutarkie">—</span>
+          <span class="statistik-item__label">Autarkiegrad</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom-Navigation (nur Mobile ≤767px) -->
+  <nav class="bottom-nav" aria-label="Hauptnavigation">
+    <a href="/dashboard.html" class="bottom-nav__item">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      <span>Dashboard</span>
+    </a>
+    <a href="/history.html" class="bottom-nav__item bottom-nav__item--active" aria-current="page">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+      <span>Verläufe</span>
+    </a>
+    <a href="/costs.html" class="bottom-nav__item">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+        <line x1="1" y1="10" x2="23" y2="10"/>
+      </svg>
+      <span>Kosten</span>
+    </a>
+    <a href="/profile.html" class="bottom-nav__item">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span>Profil</span>
+    </a>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="/js/pages/history.js"></script>
+</body>
+</html>

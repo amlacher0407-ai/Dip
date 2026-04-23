@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EEG Ropper – Gemeinsam Energie erzeugen</title>
+  <meta name="description" content="Die Energiegemeinschaft Ropper in Kärnten – gemeinsam nachhaltig Strom erzeugen, teilen und Kosten sparen.">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#22c55e">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/pages/landing.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER – Navigation
+       ============================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="container site-header__inner">
+
+      <!-- Logo -->
+      <a href="/index.html" class="site-logo">
+        <div class="site-logo__icon" aria-hidden="true">
+          <!-- Blitz-Icon als SVG -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="site-logo__text">EEG Ropper</div>
+          <div class="site-logo__sub">Kärnten</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <a href="/about.html"         class="site-nav__link">Über uns</a>
+        <a href="/visualization.html" class="site-nav__link">Energiefluss</a>
+        <a href="/login.html"         class="btn btn--primary btn--sm">Einloggen</a>
+      </nav>
+
+      <!-- Hamburger (Mobile) -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation">
+      <a href="/about.html"         class="mobile-menu__link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Über uns
+      </a>
+      <a href="/visualization.html" class="mobile-menu__link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Energiefluss
+      </a>
+      <div style="height: 1px; background: var(--border-color); margin: var(--space-2) 0;"></div>
+      <a href="/login.html" class="mobile-menu__link" style="color: var(--green-600); font-weight: 600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Mitglieder-Login
+      </a>
+    </nav>
+  </header>
+
+  <!-- Overlay für offenes Hamburger-Menü (Mobile) -->
+  <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
+
+
+  <!-- ============================================================
+       HERO – Hauptbereich
+       ============================================================ -->
+  <section class="hero">
+    <div class="container hero__inner">
+
+      <!-- Text-Seite -->
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="badge badge--green">🌱 Erneuerbare Energie</span>
+          <span class="badge badge--blue" style="margin-left: var(--space-2);">Kärnten</span>
+        </div>
+        <h1 class="hero__title">
+          Gemeinsam Energie<br>
+          <span class="hero__title-highlight">erzeugen & teilen.</span>
+        </h1>
+        <p class="hero__subtitle">
+          Die EEG Ropper verbindet Haushalte in Kärnten zu einer Energiegemeinschaft.
+          Überschüssiger Solarstrom wird lokal geteilt – das spart Kosten,
+          schont die Umwelt und stärkt die Nachbarschaft.
+        </p>
+        <div class="hero__actions">
+          <a href="/login.html" class="btn btn--primary btn--lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            Zum Mitglieder-Login
+          </a>
+          <a href="#vorteile" class="btn btn--secondary btn--lg">
+            Mehr erfahren
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Energie-Grafik (CSS + SVG, kein Bild nötig) -->
+      <div class="hero__visual" aria-hidden="true">
+        <div class="energy-graphic">
+
+          <!-- Sonne -->
+          <div class="energy-graphic__sun">
+            <svg viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="18" fill="#fbbf24" opacity="0.9"/>
+              <circle cx="40" cy="40" r="24" fill="#fbbf24" opacity="0.25"/>
+              <!-- Strahlen -->
+              <line x1="40" y1="6"  x2="40" y2="14" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+              <line x1="40" y1="66" x2="40" y2="74" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+              <line x1="6"  y1="40" x2="14" y2="40" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+              <line x1="66" y1="40" x2="74" y2="40" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+              <line x1="17" y1="17" x2="23" y2="23" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+              <line x1="57" y1="57" x2="63" y2="63" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+              <line x1="63" y1="17" x2="57" y2="23" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+              <line x1="17" y1="63" x2="23" y2="57" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Häuser -->
+          <div class="energy-graphic__houses">
+            <div class="e-house e-house--prosumer" title="Prosumer (PV + Verbrauch)">
+              <svg viewBox="0 0 48 48" fill="none">
+                <!-- Dach -->
+                <polygon points="4,22 24,4 44,22" fill="var(--green-500)" opacity="0.85"/>
+                <!-- Wand -->
+                <rect x="9" y="22" width="30" height="20" rx="1" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="1.5"/>
+                <!-- Tür -->
+                <rect x="19" y="30" width="10" height="12" rx="1" fill="var(--gray-300)"/>
+                <!-- PV-Panel auf Dach -->
+                <rect x="14" y="11" width="8" height="5" rx="1" fill="#60a5fa" opacity="0.9"/>
+                <rect x="24" y="9" width="8" height="5" rx="1" fill="#60a5fa" opacity="0.9"/>
+              </svg>
+              <span>Prosumer</span>
+            </div>
+
+            <div class="e-house e-house--center" title="Energiegemeinschaft">
+              <div class="e-house__eeg-badge">EEG</div>
+              <svg viewBox="0 0 48 48" fill="none">
+                <polygon points="4,22 24,4 44,22" fill="var(--green-600)"/>
+                <rect x="9" y="22" width="30" height="20" rx="1" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="1.5"/>
+                <rect x="19" y="30" width="10" height="12" rx="1" fill="var(--gray-300)"/>
+                <!-- Blitz im Haus -->
+                <polygon points="26,23 21,31 25,31 22,38 27,30 23,30" fill="var(--amber-500)"/>
+              </svg>
+              <span>EEG</span>
+            </div>
+
+            <div class="e-house e-house--consumer" title="Verbraucher">
+              <svg viewBox="0 0 48 48" fill="none">
+                <polygon points="4,22 24,4 44,22" fill="var(--blue-400)" opacity="0.85"/>
+                <rect x="9" y="22" width="30" height="20" rx="1" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="1.5"/>
+                <rect x="19" y="30" width="10" height="12" rx="1" fill="var(--gray-300)"/>
+                <!-- Fenster -->
+                <rect x="11" y="25" width="7" height="6" rx="1" fill="#93c5fd" opacity="0.8"/>
+                <rect x="30" y="25" width="7" height="6" rx="1" fill="#93c5fd" opacity="0.8"/>
+              </svg>
+              <span>Verbraucher</span>
+            </div>
+          </div>
+
+          <!-- Animierte Energiefluss-Pfeile -->
+          <div class="energy-graphic__flows">
+            <div class="flow-arrow flow-arrow--left">
+              <svg viewBox="0 0 60 12" fill="none">
+                <path d="M2 6 L50 6" stroke="var(--green-400)" stroke-width="2.5" stroke-dasharray="6 4" stroke-linecap="round"/>
+                <polyline points="44,2 52,6 44,10" stroke="var(--green-400)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <div class="flow-arrow flow-arrow--right">
+              <svg viewBox="0 0 60 12" fill="none">
+                <path d="M58 6 L10 6" stroke="var(--blue-400)" stroke-width="2.5" stroke-dasharray="6 4" stroke-linecap="round"/>
+                <polyline points="16,2 8,6 16,10" stroke="var(--blue-400)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Legenden-Labels -->
+          <div class="energy-graphic__legend">
+            <span class="energy-graphic__label energy-graphic__label--green">⚡ Einspeisung</span>
+            <span class="energy-graphic__label energy-graphic__label--blue">🔌 Bezug</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ZAHLEN – Live Community Stats
+       ============================================================ -->
+  <section class="stats-band">
+    <div class="container">
+      <div class="stats-band__grid">
+
+        <div class="stats-band__item">
+          <span class="stats-band__value" id="stat-members">–</span>
+          <span class="stats-band__label">Mitglieder</span>
+        </div>
+        <div class="stats-band__divider" aria-hidden="true"></div>
+
+        <div class="stats-band__item">
+          <span class="stats-band__value" id="stat-kwp">–</span>
+          <span class="stats-band__label">kWp installiert</span>
+        </div>
+        <div class="stats-band__divider" aria-hidden="true"></div>
+
+        <div class="stats-band__item">
+          <span class="stats-band__value" id="stat-autarkie">–</span>
+          <span class="stats-band__label">Autarkiegrad (aktuell)</span>
+        </div>
+        <div class="stats-band__divider" aria-hidden="true"></div>
+
+        <div class="stats-band__item">
+          <span class="stats-band__value" id="stat-generation">–</span>
+          <span class="stats-band__label">kW Erzeugung (live)</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       VORTEILE – Was bringt eine EEG?
+       ============================================================ -->
+  <section class="section" id="vorteile">
+    <div class="container">
+
+      <div class="section__header">
+        <h2 class="section__title">Was bringt eine Energiegemeinschaft?</h2>
+        <p class="section__subtitle">
+          Eine EEG ermöglicht es Nachbarn, gemeinsam Strom zu erzeugen und zu teilen –
+          günstiger, grüner und unabhängiger.
+        </p>
+      </div>
+
+      <div class="grid-2" style="gap: var(--space-6);">
+
+        <div class="benefit-card">
+          <div class="benefit-card__icon benefit-card__icon--green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="benefit-card__content">
+            <h3 class="benefit-card__title">Günstigerer Strom</h3>
+            <p class="benefit-card__text">
+              Mitglieder beziehen Solarstrom von Nachbarn zu reduzierten Preisen –
+              deutlich günstiger als der reguläre Netzpreis. Überschüsse werden
+              fair aufgeteilt statt billig eingespeist.
+            </p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-card__icon benefit-card__icon--amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <div class="benefit-card__content">
+            <h3 class="benefit-card__title">100 % erneuerbar</h3>
+            <p class="benefit-card__text">
+              Der geteilte Strom stammt ausschließlich aus lokalen Photovoltaik-Anlagen.
+              Jede verbrauchte Kilowattstunde innerhalb der Gemeinschaft ist sauber erzeugt –
+              ohne CO₂-Emissionen.
+            </p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-card__icon benefit-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="benefit-card__content">
+            <h3 class="benefit-card__title">Lokale Gemeinschaft</h3>
+            <p class="benefit-card__text">
+              Energie bleibt in der Region. Die EEG stärkt den sozialen Zusammenhalt
+              in Kärnten – Nachbarn unterstützen sich gegenseitig und
+              profitieren gemeinsam.
+            </p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-card__icon benefit-card__icon--green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="benefit-card__content">
+            <h3 class="benefit-card__title">Transparenz & Kontrolle</h3>
+            <p class="benefit-card__text">
+              Jedes Mitglied sieht in Echtzeit seinen Verbrauch, die Erzeugung und
+              den Anteil an der Gemeinschaft. Keine schwarzen Boxen – alles
+              nachvollziehbar im Dashboard.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WIE ES FUNKTIONIERT – 3 Schritte
+       ============================================================ -->
+  <section class="section section--tinted" id="wie-es-funktioniert">
+    <div class="container">
+
+      <div class="section__header">
+        <h2 class="section__title">So funktioniert die EEG Ropper</h2>
+        <p class="section__subtitle">
+          Drei einfache Schritte – vom Sonnenlicht bis zur Stromrechnung.
+        </p>
+      </div>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step__number">1</div>
+          <div class="step__icon step__icon--amber">
+            <!-- Solarpanel -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <line x1="2" y1="16" x2="22" y2="16"/>
+              <line x1="9" y1="7" x2="9" y2="21"/>
+              <line x1="15" y1="7" x2="15" y2="21"/>
+              <line x1="12" y1="3" x2="12" y2="7"/>
+              <line x1="9" y1="4" x2="12" y2="3"/>
+              <line x1="15" y1="4" x2="12" y2="3"/>
+            </svg>
+          </div>
+          <h3 class="step__title">PV-Anlage erzeugt Strom</h3>
+          <p class="step__text">
+            Prosumer-Mitglieder erzeugen tagsüber mehr Strom als sie selbst verbrauchen.
+            Der Überschuss wird über das lokale Netz automatisch zur Verfügung gestellt.
+          </p>
+        </div>
+
+        <div class="step__connector" aria-hidden="true">
+          <svg viewBox="0 0 40 24" fill="none">
+            <path d="M2 12 L30 12" stroke="var(--green-300)" stroke-width="2" stroke-dasharray="5 4"/>
+            <polyline points="24,7 32,12 24,17" stroke="var(--green-400)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+
+        <div class="step">
+          <div class="step__number">2</div>
+          <div class="step__icon step__icon--green">
+            <!-- Zwei Häuser mit Pfeil = Energie teilen -->
+            <svg viewBox="0 0 32 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <!-- Haus links -->
+              <polyline points="1,11 7,5 13,11"/>
+              <rect x="3" y="11" width="8" height="8" rx="0.5"/>
+              <rect x="5.5" y="15" width="3" height="4"/>
+              <!-- Haus rechts -->
+              <polyline points="19,11 25,5 31,11"/>
+              <rect x="21" y="11" width="8" height="8" rx="0.5"/>
+              <rect x="23.5" y="15" width="3" height="4"/>
+              <!-- Pfeil in der Mitte -->
+              <line x1="13.5" y1="12" x2="18.5" y2="12"/>
+              <polyline points="16.5,10 19,12 16.5,14"/>
+            </svg>
+          </div>
+          <h3 class="step__title">EEG verteilt den Überschuss</h3>
+          <p class="step__text">
+            Die Energiegemeinschaft verteilt den verfügbaren Strom nach einem
+            vereinbarten Schlüssel an alle Mitglieder – in Echtzeit, automatisch,
+            nachvollziehbar.
+          </p>
+        </div>
+
+        <div class="step__connector" aria-hidden="true">
+          <svg viewBox="0 0 40 24" fill="none">
+            <path d="M2 12 L30 12" stroke="var(--green-300)" stroke-width="2" stroke-dasharray="5 4"/>
+            <polyline points="24,7 32,12 24,17" stroke="var(--green-400)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+
+        <div class="step">
+          <div class="step__number">3</div>
+          <div class="step__icon step__icon--blue">
+            <!-- Sparschwein / Euro -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3 class="step__title">Alle Mitglieder sparen</h3>
+          <p class="step__text">
+            Verbraucher bezahlen weniger als den Netztarif. Prosumer erhalten
+            einen fairen Preis für ihren Überschuss. Am Monatsende gibt es eine
+            transparente Abrechnung.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       EEG IN ZAHLEN – Animierte Statistiken
+       ============================================================ -->
+  <section class="section" id="zahlen">
+    <div class="container">
+
+      <div class="section__header">
+        <h2 class="section__title">EEG Ropper in Zahlen</h2>
+        <p class="section__subtitle">Echte Daten aus unserer Gemeinschaft – täglich aktualisiert.</p>
+      </div>
+
+      <div class="numbers-grid">
+
+        <div class="number-card number-card--green">
+          <div class="number-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="number-card__value-wrap">
+            <span class="number-card__value" id="num-members">0</span>
+            <span class="number-card__unit">Haushalte</span>
+          </div>
+          <p class="number-card__label">Aktive Mitglieder</p>
+        </div>
+
+        <div class="number-card number-card--amber">
+          <div class="number-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="16" x2="22" y2="16"/><line x1="9" y1="7" x2="9" y2="21"/><line x1="15" y1="7" x2="15" y2="21"/></svg>
+          </div>
+          <div class="number-card__value-wrap">
+            <span class="number-card__value" id="num-kwp">0</span>
+            <span class="number-card__unit">kWp</span>
+          </div>
+          <p class="number-card__label">Installierte PV-Leistung</p>
+        </div>
+
+        <div class="number-card number-card--blue">
+          <div class="number-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="number-card__value-wrap">
+            <span class="number-card__value" id="num-prosumer">0</span>
+            <span class="number-card__unit">von <span id="num-total">6</span></span>
+          </div>
+          <p class="number-card__label">Prosumer mit PV-Anlage</p>
+        </div>
+
+        <div class="number-card number-card--green">
+          <div class="number-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="number-card__value-wrap">
+            <span class="number-card__value" id="num-autarkie">0</span>
+            <span class="number-card__unit">%</span>
+          </div>
+          <p class="number-card__label">Autarkiegrad (jetzt)</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA – Beitritts-Aufforderung für Interessierte
+       ============================================================ -->
+  <section class="cta-section">
+    <div class="container cta-section__inner">
+      <div class="cta-section__content">
+        <h2 class="cta-section__title">Interesse, Teil der EEG Ropper zu werden?</h2>
+        <p class="cta-section__text">
+          Du wohnst in Kärnten und möchtest günstigen Solarstrom beziehen
+          oder deine PV-Anlage in die Gemeinschaft einbringen? Wir freuen uns
+          über jede Anfrage.
+        </p>
+      </div>
+      <div class="cta-section__actions">
+        <a href="/about.html#kontakt" class="btn btn--primary btn--lg">
+          Jetzt Kontakt aufnehmen
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="/about.html" class="btn btn--outline btn--lg" style="border-color: rgba(255,255,255,0.5); color: white;">
+          Mehr über die EEG
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Über die EEG -->
+        <div class="footer__col footer__col--brand">
+          <a href="/index.html" class="site-logo" style="color: white; margin-bottom: var(--space-3);">
+            <div class="site-logo__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div>
+              <div class="site-logo__text" style="color: white;">EEG Ropper</div>
+              <div class="site-logo__sub">Kärnten</div>
+            </div>
+          </a>
+          <p class="footer__tagline">
+            Gemeinsam Energie erzeugen, teilen und sparen –
+            für eine nachhaltige Zukunft in der Region.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer__col">
+          <h4 class="footer__heading">Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="/index.html">Startseite</a></li>
+            <li><a href="/about.html">Über uns</a></li>
+            <li><a href="/visualization.html">Energiefluss</a></li>
+            <li><a href="/login.html">Mitglieder-Login</a></li>
+          </ul>
+        </div>
+
+        <!-- Kontakt -->
+        <div class="footer__col">
+          <h4 class="footer__heading">Kontakt</h4>
+          <ul class="footer__links">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline;vertical-align:middle;margin-right:6px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:info@eeg-ropper.at">info@eeg-ropper.at</a>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline;vertical-align:middle;margin-right:6px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Kärnten
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; <span id="current-year"></span> EEG Ropper. Diplomarbeit HTL.</p>
+        <div class="footer__bottom-links">
+          <a href="/about.html#impressum">Impressum</a>
+          <a href="/about.html#datenschutz">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="/js/data.js"></script>
+  <script src="/js/pages/landing.js"></script>
+
+</body>
+</html>

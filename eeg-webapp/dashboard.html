@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Dashboard – EEG Ropper</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#22c55e">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/pages/dashboard.css">
+</head>
+<body>
+  <!-- Seitenschutz: nur eingeloggte User -->
+  <script src="/js/data.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/guard.js"></script>
+
+  <!-- App-Header -->
+  <header class="app-header">
+    <a href="/index.html" class="app-header__logo">EEG Ropper</a>
+    <div class="app-header__user">
+      <div class="user-avatar" id="userAvatar" aria-hidden="true"></div>
+      <span class="app-header__username" id="userName"></span>
+      <button class="btn btn--sm btn--ghost" id="logoutBtn" type="button">Abmelden</button>
+    </div>
+  </header>
+
+  <!-- Begrüßung -->
+  <section class="greeting">
+    <h1 class="greeting__title" id="greetingTitle"></h1>
+    <p class="greeting__date" id="greetingDate"></p>
+  </section>
+
+  <!-- Hauptbereich -->
+  <main class="dashboard-main">
+    <!-- Live-Werte-Kacheln (Schritt 4b) -->
+    <section class="live-grid" aria-label="Aktuelle Energiewerte">
+
+      <div class="live-card live-card--pv" id="cardPv">
+        <span class="live-card__label">PV-Erzeugung</span>
+        <span class="live-card__value" id="valPv">—</span>
+        <span class="live-card__hint">aktuell</span>
+      </div>
+
+      <div class="live-card live-card--consumption" id="cardVerbrauch">
+        <span class="live-card__label">Verbrauch</span>
+        <span class="live-card__value" id="valVerbrauch">—</span>
+        <span class="live-card__hint">aktuell</span>
+      </div>
+
+      <div class="live-card live-card--feed" id="cardEinspeisung">
+        <span class="live-card__label">Einspeisung</span>
+        <span class="live-card__value" id="valEinspeisung">—</span>
+        <span class="live-card__hint">aktuell</span>
+      </div>
+
+      <div class="live-card live-card--grid" id="cardNetzbezug">
+        <span class="live-card__label">Netzbezug</span>
+        <span class="live-card__value" id="valNetzbezug">—</span>
+        <span class="live-card__hint">aktuell</span>
+      </div>
+
+    </section>
+    <!-- Heutiger Verlauf (Schritt 4c) -->
+    <section class="chart-card" aria-label="Heutiger Tagesverlauf">
+      <h2 class="chart-card__title">Heutiger Verlauf</h2>
+      <div class="chart-container">
+        <canvas id="tagesverlaufChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Community-Übersicht (Schritt 4d) -->
+    <section class="community-card" aria-label="EEG Ropper — Gemeinschaft jetzt">
+      <h2 class="community-card__title">EEG Ropper — Gemeinschaft jetzt</h2>
+      <div class="community-stats-grid">
+
+        <div class="community-stat community-stat--autarkie">
+          <span class="community-stat__label">Autarkiegrad</span>
+          <span class="community-stat__value" id="valAutarkie">—</span>
+          <span class="community-stat__context" id="autarkieKontext"></span>
+        </div>
+
+        <div class="community-stat">
+          <span class="community-stat__label">Aktive Prosumer</span>
+          <span class="community-stat__value" id="valProsumer">—</span>
+        </div>
+
+        <div class="community-stat">
+          <span class="community-stat__label">Community-PV</span>
+          <span class="community-stat__value community-stat__value--green" id="valCommunityPv">—</span>
+        </div>
+
+        <div class="community-stat">
+          <span class="community-stat__label">Verbrauch gesamt</span>
+          <span class="community-stat__value community-stat__value--blue" id="valCommunityVerbrauch">—</span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom-Navigation (nur Mobile ≤767px) -->
+  <nav class="bottom-nav" aria-label="Hauptnavigation">
+    <a href="/dashboard.html" class="bottom-nav__item bottom-nav__item--active" aria-current="page">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      <span>Dashboard</span>
+    </a>
+    <a href="/history.html" class="bottom-nav__item">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+      <span>Verläufe</span>
+    </a>
+    <a href="/costs.html" class="bottom-nav__item">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+        <line x1="1" y1="10" x2="23" y2="10"/>
+      </svg>
+      <span>Kosten</span>
+    </a>
+    <a href="/profile.html" class="bottom-nav__item">
+      <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span>Profil</span>
+    </a>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="/js/pages/dashboard.js"></script>
+</body>
+</html>
